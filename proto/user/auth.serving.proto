@@ -1,18 +1,33 @@
 syntax = "proto3";
 
-package auth;
+import "user.serving.proto";
+package qmarket.serving.user;
 
 service AuthService {
   rpc Register (RegisterRequest) returns (RegisterResponse) {}
   rpc Login (LoginRequest) returns (LoginResponse) {}
   rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse) {}
+  rpc Validate (ValidateRequest) returns (ValidateResponse) {}
 }
 
 // Register
 
 message RegisterRequest {
-  string phone = 1;
-  string password = 2;
+  // required
+  string name = 1;
+
+  // required
+  string phone = 2;
+
+  string email = 3;
+
+  string password = 4;
+
+  string role = 5;
+
+  string status = 6;
+
+  string address = 7;
 }
 
 message RegisterResponse {
@@ -32,7 +47,7 @@ message LoginResponse {
   int32 status = 1;
   repeated string error = 2;
   string token = 3;
-  string user_id = 4;
+  qmarket.serving.user.UserProto user_data = 4;
   string message = 5;
 }
 
@@ -46,4 +61,16 @@ message ChangePasswordResponse {
   int32 status = 1;
   repeated string error = 2;
   string message = 3;
+}
+
+// Validate
+
+message ValidateRequest {
+  string token = 1;
+}
+
+message ValidateResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  qmarket.serving.user.UserProto user_data = 3;
 }

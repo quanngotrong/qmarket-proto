@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package qmarket.storage.user;
+
+// Master data for user
+// next: 8
+message UserProto {
+  // required
+  string name = 1;
+
+  // required
+  string phone = 2;
+
+  string email = 3;
+
+  string password = 4;
+
+  string role = 5;
+
+  string status = 6;
+
+  string address = 7;
+}
