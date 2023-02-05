@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package qmarket.serving.shop;
+
+service ShopService {
+  rpc CreateShop (CreateShopRequest) returns (CreateShopResponse) {}
+  rpc GetShop (GetShopRequest) returns (GetShopResponse) {}
+  rpc UpdateShop (UpdateShopRequest) returns (UpdateShopResponse) {}
+  rpc DeleteShop (DeleteShopRequest) returns (DeleteShopResponse) {}
+}
+
+// next: 10
+message Shop {
+  string id = 1;
+  string shop_owner_id = 2;
+  string status = 3;
+  string name = 4;
+  string phone = 5;
+  string address = 6;
+  string description = 7;
+  string image = 8;
+  string email = 9;
+}
+
+
+// CreateShop
+
+// next: 7
+message CreateShopRequest {
+  string name = 1;
+  string phone = 2;
+  string address = 3;
+  string description = 4;
+  string image = 5;
+  string email = 6;
+}
+
+message CreateShopResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+  string message = 4;
+}
+
+
+// GetShop
+
+message GetShopRequest {
+  string id = 3;
+}
+
+message GetShopResponse {
+  Shop shop = 1;
+  int32 status = 2;
+  repeated string error = 3;
+  string message = 4;
+}
+
+// UpdateShop
+
+message UpdateShopRequest {
+  string name = 1;
+  string phone = 2;
+  string address = 3;
+  string description = 4;
+  string image = 5;
+  string email = 6;
+  string id = 7;
+}
+
+message UpdateShopResponse {
+  Shop shop = 1;
+  int32 status = 2;
+  repeated string error = 3;
+  string message = 4;
+}
+
+// DeleteShop
+
+message DeleteShopRequest {
+  string id = 1;
+}
+
+message DeleteShopResponse {
+  string status = 1;
+  repeated string error = 2;
+  string message = 3;
+}
+

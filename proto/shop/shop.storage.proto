@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package qmarket.storage.shop;
+
+// Master data for shop
+// next: 10
+message Shop {
+  string id = 1;
+  string shop_owner_id = 2;
+  string status = 3;
+  string name = 4;
+  string phone = 5;
+  string address = 6;
+  string description = 7;
+  string image = 8;
+  string email = 9;
+}
