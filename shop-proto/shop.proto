@@ -1,11 +1,15 @@
 syntax = "proto3";
 
-package qmarket.serving.shop;
+package qmarket.shop;
 
 service ShopService {
+  // POST: /api/shop/create-shop
   rpc CreateShop (CreateShopRequest) returns (CreateShopResponse) {}
+  // POST: /api/shop/get-shop
   rpc GetShop (GetShopRequest) returns (GetShopResponse) {}
+  // POST: /api/shop/update-shop
   rpc UpdateShop (UpdateShopRequest) returns (UpdateShopResponse) {}
+  // POST: /api/shop/delete-shop
   rpc DeleteShop (DeleteShopRequest) returns (DeleteShopResponse) {}
 }
 
@@ -33,13 +37,12 @@ message CreateShopRequest {
   string description = 4;
   string image = 5;
   string email = 6;
-  string shop_owner_id = 7;
 }
 
 message CreateShopResponse {
   int32 status = 1;
   repeated string error = 2;
-  string id = 3;
+  string shop_id = 3;
   string message = 4;
 }
 
@@ -47,7 +50,7 @@ message CreateShopResponse {
 // GetShop
 
 message GetShopRequest {
-  string id = 3;
+  string shop_id = 3;
 }
 
 message GetShopResponse {
@@ -66,7 +69,7 @@ message UpdateShopRequest {
   string description = 4;
   string image = 5;
   string email = 6;
-  string id = 7;
+  string shop_id = 7;
 }
 
 message UpdateShopResponse {
@@ -79,7 +82,7 @@ message UpdateShopResponse {
 // DeleteShop
 
 message DeleteShopRequest {
-  string id = 1;
+  string shop_id = 1;
 }
 
 message DeleteShopResponse {
