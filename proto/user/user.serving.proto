@@ -20,4 +20,6 @@ message UserProto {
   string status = 6;
 
   string address = 7;
+
+  string id = 8;
 }
