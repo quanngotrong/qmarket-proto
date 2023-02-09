@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package qmarket.storage.user;
+
+message EmployeeProto {
+  string user_id = 1;
+  string employee_name = 2;
+  string employee_phone = 3;
+  string employee_address = 4;
+  string employee_department_name = 5;
+  string employee_department_id = 6;
+  string shop_id = 7;
+  string salary_base = 8;
+  string employee_position_name = 9;
+  string employee_position_id = 10;
+  repeated string employee_permissions = 11;
+}
+
+message DepartmentProto {
+  string department_id = 1;
+  string department_name = 2;
+  repeated string department_permissions = 3;
+}

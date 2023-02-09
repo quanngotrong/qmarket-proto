@@ -8,6 +8,9 @@ service AuthService {
   rpc Login (LoginRequest) returns (LoginResponse) {}
   rpc changePassword (ChangePasswordRequest) returns (ChangePasswordResponse) {}
   rpc Validate (ValidateRequest) returns (ValidateResponse) {}
+
+  rpc GetRelatedShops (GetRelatedShopsRequest) returns (GetRelatedShopsResponse) {}
+  rpc GetSelfPermissions (GetSelfPermissionsRequest) returns (GetSelfPermissionsResponse) {}
 }
 
 // Register
@@ -73,4 +76,37 @@ message ValidateResponse {
   int32 status = 1;
   repeated string error = 2;
   qmarket.serving.user.UserProto user_data = 3;
+}
+
+// GetRelatedShops
+
+message GetRelatedShopsRequest {
+  string employee_user_id = 1;
+}
+
+message GetRelatedShopsResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string message = 3;
+  message RelatedShop {
+    string shop_id = 1;
+    string role = 2;
+  }
+
+  repeated RelatedShop related_shops = 4;
+}
+
+// GetSelfPermissions
+
+message GetSelfPermissionsRequest {
+  string employee_user_id = 1;
+  string shop_id = 2;
+}
+
+message GetSelfPermissionsResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string message = 3;
+
+  repeated string permissions = 4;
 }

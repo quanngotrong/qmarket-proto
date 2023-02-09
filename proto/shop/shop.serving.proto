@@ -7,6 +7,7 @@ service ShopService {
   rpc GetShop (GetShopRequest) returns (GetShopResponse) {}
   rpc UpdateShop (UpdateShopRequest) returns (UpdateShopResponse) {}
   rpc DeleteShop (DeleteShopRequest) returns (DeleteShopResponse) {}
+  rpc GetShops (GetShopsRequest) returns (GetShopsResponse) {}
 }
 
 // next: 10
@@ -88,3 +89,15 @@ message DeleteShopResponse {
   string message = 3;
 }
 
+// GetShops
+
+message GetShopsRequest {
+  string employee_user_id = 1;
+}
+
+message GetShopsResponse {
+  string status = 1;
+  repeated string error = 2;
+  string message = 3;
+  repeated Shop shops = 4;
+}
